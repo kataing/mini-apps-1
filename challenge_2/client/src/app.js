@@ -12,7 +12,8 @@ class App extends React.Component {
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.handlePickedFile = this.handlePickedFile.bind(this);
     this.handleLinkOnClick = this.handleLinkOnClick.bind(this);
-    this.filepath = '../../server/export/converted.csv';
+    // this.filepath = '../../server/export/converted.csv';
+    this.filepath = '../dist/converted.csv';
   }
 
   post({ jsonText }) {
