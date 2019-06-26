@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import path from 'path';
 
 class App extends React.Component {
   constructor(props) {
