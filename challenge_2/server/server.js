@@ -11,13 +11,17 @@ app.use(parse.json());
 app.use(parse.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/dist/')));
 
-const filename = 'test.csv';
+const filename = 'converted.csv';
 const filepath = path.join(__dirname, `./export/${filename}`);
 
 // sends data to the client
 app.get('/api', (req, res) => {
   const contents = fs.readFileSync(filepath);
   res.status(200).send(contents);
+});
+
+app.get('/api/filename', (req, res) => {
+  res.status(200).send(filepath);
 });
 
 // posts data from the client
