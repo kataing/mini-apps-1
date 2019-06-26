@@ -12,7 +12,6 @@ app.use(parse.json());
 app.use(parse.urlencoded( { extended: true }));
 app.use(express.static(path.join(__dirname, './client/dist/')));
 
-app.use('/api', route);
-// app.get()
+app.use('/route', route);
 
 app.listen(port, () => console.log(`Checkout App listening on port ${port}.`));

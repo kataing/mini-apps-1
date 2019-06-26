@@ -1,20 +1,21 @@
 const model = require('../database/model.js');
 
 const controller = {
-  get: (res, req) => {
+  get: (req, res) => {
+    // console.log(req.params);
     const { id } = req.params;
     model
       .findAll({
-        where: { id }
+        where: { id: id }
       })
-      .then(({ data }) => {
-        res.status(200).send(data);
+      .then((data) => {
+        res.status(200).send(...data);
       })
       .catch((err) => {
         res.status(404).send(err);
       })
   },
-  post: (res, req) => {
+  post: (req, res) => {
     model
       .create(req.body)
       .then(() => {
@@ -22,10 +23,9 @@ const controller = {
       })
       .catch((err) => {
         res.status(404).send(err)
-      })
-
+      });
   },
-  update: (res, req) => {
+  update: (req, res) => {
     const { id } = req.params;
     model
       .update({
@@ -36,7 +36,7 @@ const controller = {
       })
       .catch((err) => {
         res.status(404).send(err)
-      })
+      });
   }
 }
 

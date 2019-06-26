@@ -2,21 +2,21 @@ const Sequelize = require('sequelize');
 const db = require('./index.js');
 
 const Cart = db.define('cart', {
-  name: Sequelize.STRING,
-  email: Sequelize.STRING,
-  password: Sequelize.STRING,
-  addressline1: Sequelize.STRING,
-  addressline2: Sequelize.STRING,
-  city: Sequelize.TEXT,
-  state: Sequelize.TEXT,
-  zipcode: Sequelize.INTEGER,
-  phone: Sequelize.INTEGER,
-  creditcard: Sequelize.INTEGER,
-  expirydate: Sequelize.DATEONLY,
-  cvv: Sequelize.INTEGER,
-  billingzip: Sequelize.INTEGER,
-  purchase: Sequelize.BOOLEAN
-}, { timestamps: true })
+  name: { type: Sequelize.STRING },
+  email: { type: Sequelize.STRING },
+  password: { type: Sequelize.STRING },
+  addressline1: { type: Sequelize.STRING },
+  addressline2: { type: Sequelize.STRING },
+  city: { type: Sequelize.TEXT },
+  state: { type: Sequelize.TEXT },
+  zipcode: { type: Sequelize.INTEGER },
+  phone: { type: Sequelize.INTEGER },
+  creditcard: { type: Sequelize.INTEGER },
+  expirydate: { type: Sequelize.DATEONLY },
+  cvv: { type: Sequelize.INTEGER },
+  billingzip: { type: Sequelize.INTEGER },
+  purchase: { type: Sequelize.BOOLEAN }
+}, { timestamps: false })
 
 Cart.sync({ force: false })
 

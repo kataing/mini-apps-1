@@ -5,8 +5,11 @@ const controller = require('./controller.js');
 
 router
   .route('/api')
-  .get(controller.get)
   .post(controller.post)
+
+router
+  .route('/api/:id')
+  .get(controller.get)
   .put(controller.update);
 
 module.exports = router;
