@@ -18,8 +18,8 @@ const controller = {
   post: (req, res) => {
     model
       .create(req.body)
-      .then(() => {
-        res.status(201).send('Your entry has been created');
+      .then((data) => {
+        res.status(201).send(data.id.toString());
       })
       .catch((err) => {
         res.status(404).send(err)
@@ -27,10 +27,12 @@ const controller = {
   },
   update: (req, res) => {
     const { id } = req.params;
+    // const content = req.body;
     model
-      .update({
-        where: { id }
-      })
+      .update(
+        req.body,
+        { where: { id } }
+      )
       .then(() => {
         res.status(204).send('Your entry has been updated');
       })
