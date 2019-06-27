@@ -3,13 +3,13 @@ import RowCol from './rowCol.jsx';
 
 const Row = (props) => {
   return (
-    props.row.map((rowCol, key) => {
-      return (
-        <td className='piece' id={'c' + props.key}>
+    <tr>
+      {props.row.map((rowCol, key) => {
+        return (
           <RowCol key={key} rowCol={rowCol} />
-        </td>
-      )
-    })
+        )
+      })}
+    </tr>
   )
 }
 
