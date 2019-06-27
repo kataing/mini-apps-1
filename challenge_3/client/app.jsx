@@ -32,7 +32,7 @@ class App extends React.Component {
     this.handleNext3Click = this.handleNext3Click.bind(this);
     this.handlePurchaseClick = this.handlePurchaseClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
-    this.post = this.post.bind(this);
+    // this.post = this.post.bind(this);
     this.update = this.update.bind(this);
   }
 

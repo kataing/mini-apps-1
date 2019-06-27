@@ -9,7 +9,7 @@ router
 
 router
   .route('/api/:id')
-  .get(controller.get)
+  // .get(controller.get)
   .put(controller.update);
 
 module.exports = router;
