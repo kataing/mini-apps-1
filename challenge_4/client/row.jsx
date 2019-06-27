@@ -6,7 +6,7 @@ const Row = (props) => {
     <tr>
       {props.row.map((rowCol, key) => {
         return (
-          <RowCol key={key} rowCol={rowCol} />
+          <RowCol key={key} rowCol={rowCol} handleOnClick={props.handleOnClick}/>
         )
       })}
     </tr>

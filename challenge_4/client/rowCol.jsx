@@ -2,7 +2,7 @@ import React from 'react';
 
 const RowCol = (props) => {
   return (
-    <td>{props.rowCol}</td>
+    <td onClick={props.handleOnClick}>{props.rowCol}</td>
   )
 }
 

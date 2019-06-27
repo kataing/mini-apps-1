@@ -22,4 +22,9 @@ app.get('/api', (req, res) => {
   res.status(200).send(board);
 })
 
+app.post('/api/:id', (req, res) => {
+  console.log(req.params);
+  req.status(201).status('posted!');
+})
+
 app.listen(port, () => console.log(`App listening on port ${port}`));

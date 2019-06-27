@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       board: []
     }
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   get() {
@@ -21,6 +22,19 @@ class App extends React.Component {
         })
       })
       .catch(() => console.log('We were not able to complete your request.'))
+  }
+
+  post(id) {
+    console.log('post')
+    axios
+      .post('/api/id')
+      .then(() => {console.log('hello');})
+      .catch(() => {console.log('this crashed')})
+
+  }
+
+  handleOnClick(e) {
+    this.post(e.target.id);
   }
 
   componentDidMount() {
@@ -36,7 +50,7 @@ class App extends React.Component {
           <tbody className='board'>
             {this.state.board.map((row, key) => {
               return (
-                <Row key={key} row={row} />
+                <Row key={key} row={row} handleOnClick={this.handleOnClick} />
               )
             })}
           </tbody>
