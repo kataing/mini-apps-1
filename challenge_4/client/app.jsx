@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import Board from './board.jsx';
+import Row from './row.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +32,9 @@ class App extends React.Component {
       // <div>This is the app</div>
       this.state.board.map((row, key) => {
         return(
-          <Board row={row} key={key}/>
+          <div id={'r' + key}>
+            <Row key={key} row={row}/>
+          </div>
         )
       })
     );
