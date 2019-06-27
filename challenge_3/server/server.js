@@ -10,7 +10,7 @@ const port = 3333;
 
 app.use(parse.json());
 app.use(parse.urlencoded( { extended: true }));
-app.use(express.static(path.join(__dirname, '../client/dist/')));
+app.use(express.static(path.join(__dirname, '../public/')));
 
 app.use('/route', route);
 
