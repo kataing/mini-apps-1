@@ -5,9 +5,9 @@ const Row = (props) => {
   return (
     props.row.map((rowCol, key) => {
       return (
-        <span id={'c' + props.key}>
+        <td className='piece' id={'c' + props.key}>
           <RowCol key={key} rowCol={rowCol} />
-        </span>
+        </td>
       )
     })
   )
