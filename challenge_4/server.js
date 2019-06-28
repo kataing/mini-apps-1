@@ -12,17 +12,35 @@ app.use(express.static(path.join(__dirname, '/public')));
 let board;
 let colTracker = {};
 
-checkEndGame = (r, c, p) => {
-  if (checkHorizontal(r, p)) {
-    return true;
-  } else if (checkVertical(c, p)) {
-    return true;
-  } else if (checkMajorDiagonal(r, c, p)) {
-    return true;
-  } else if (checkMinorDiagonal(r, c, p)) {
-    return true;
+makeNewBoard = () => {
+  newBoard = [];
+  for (let i = 0; i < 6; i++) {
+    newBoard.push(createRow());
   }
-  return false;
+  return newBoard;
+}
+
+createRow = () => {
+  row = [];
+
+  for (let j = 0; j < 7; j++) {
+    row.push(0);
+  }
+  return row;
+}
+
+checkEndGame = (r, c, p) => {
+  let result = false;
+  if (checkHorizontal(r, p)) {
+    result = true;
+  } else if (checkVertical(c, p)) {
+    result = true;
+  } else if (checkMajorDiagonal(r, c, p)) {
+    result = true;
+  } else if (checkMinorDiagonal(r, c, p)) {
+    result = true;
+  }
+  return result;
 }
 
 checkHorizontal = (r, p) => {
@@ -61,12 +79,12 @@ checkMajorDiagonal = (r, c, p) => {
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
       if (i - j === diagonal) {
-        if(board[i][j] === Number(p)) {
-        count++;
+        if (board[i][j] === Number(p)) {
+          count++;
         } else {
           count = 0;
         }
-        if(count === 4) {
+        if (count === 4) {
           return true;
         }
       }
@@ -81,12 +99,12 @@ checkMinorDiagonal = (r, c, p) => {
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
       if (i + j === diagonal) {
-        if(board[i][j] === Number(p)) {
-        count++;
+        if (board[i][j] === Number(p)) {
+          count++;
         } else {
           count = 0;
         }
-        if(count === 4) {
+        if (count === 4) {
           return true;
         }
       }
@@ -108,14 +126,7 @@ updateBoard = (c, p) => {
 }
 
 app.get('/api', (req, res) => {
-  board = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0]
-  ];
+  board = makeNewBoard();
   res.status(200).send(board);
 })
 
