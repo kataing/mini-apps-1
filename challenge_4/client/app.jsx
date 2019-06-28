@@ -37,8 +37,6 @@ class App extends React.Component {
           board: data.board,
           endGame: data.endGame
         })
-        console.log('this is board', data.board);
-        console.log('this is end.game', data.endGame);
       })
       .catch(() => {console.log('this request was not completed')})
 
