@@ -9,6 +9,7 @@ class App extends React.Component {
 
     this.state = {
       board: [],
+      endGame: false,
       player: true
     }
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -33,7 +34,8 @@ class App extends React.Component {
       .post(`/api/${colIndex}?player=${player}`)
       .then(({ data }) => {
         this.setState({
-          board: data.board
+          board: data.board,
+          endGame: data.endGame
         })
         console.log('this is board', data.board);
         console.log('this is end.game', data.endGame);
@@ -43,13 +45,20 @@ class App extends React.Component {
   }
 
   handleOnClick(e) {
-    if(Number(e.target.className[4]) === 0) {
+    if(Number(e.target.className[4]) === 0 && !this.state.endGame) {
       this.post(e.target.className);
       this.setState({
         player: !this.state.player
       })
-    } else {
-      console.log('pick another column');
+    }
+  }
+
+  renderWinner() {
+    if(this.state.endGame) {
+      const player = this.state.player ? 'Black' : 'Red';
+      return(
+        <h2>{'Team ' + player + ' Wins!'}</h2>
+      );
     }
   }
 
@@ -66,6 +75,7 @@ class App extends React.Component {
       <div>
         <h1>Connect Four</h1>
         <h2>Let's play!</h2>
+        {this.renderWinner()}
         <table>
           <tbody className='board'>
             {this.state.board.map((row, key) => {
