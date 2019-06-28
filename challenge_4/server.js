@@ -12,31 +12,92 @@ app.use(express.static(path.join(__dirname, '/public')));
 let board;
 let colTracker = {};
 
-checkEndGame = (r, c) => {
-  if(checkHorizontal(r)) {
+checkEndGame = (r, c, p) => {
+  if (checkHorizontal(r, p)) {
+    return true;
+  } else if (checkVertical(c, p)) {
+    return true;
+  } else if (checkMajorDiagonal(r, c, p)) {
+    return true;
+  } else if (checkMinorDiagonal(r, c, p)) {
     return true;
   }
   return false;
 }
 
-checkHorizontal = (r) => {
+checkHorizontal = (r, p) => {
   let count = 0;
-  for(let i = 0; i < r.length; i++) {
-    if(this.state.board[r][i]) {
-      count ++;
+  for (let i = 0; i < board[r].length; i++) {
+    if (board[r][i] === Number(p)) {
+      count++;
     } else {
       count = 0;
     }
-    if(count === 4) {
+    if (count === 4) {
       return true;
     }
   }
   return false;
 }
 
+checkVertical = (c, p) => {
+  let count = 0;
+  for (let i = 0; i < board.length; i++) {
+    if (board[i][c] === Number(p)) {
+      count++;
+    } else {
+      count = 0;
+    }
+    if (count === 4) {
+      return true;
+    }
+  }
+  return false;
+}
+
+checkMajorDiagonal = (r, c, p) => {
+  let count = 0;
+  let diagonal = r - c;
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (i - j === diagonal) {
+        if(board[i][j] === Number(p)) {
+        count++;
+        } else {
+          count = 0;
+        }
+        if(count === 4) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+checkMinorDiagonal = (r, c, p) => {
+  let count = 0;
+  let diagonal = r + c;
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (i + j === diagonal) {
+        if(board[i][j] === Number(p)) {
+        count++;
+        } else {
+          count = 0;
+        }
+        if(count === 4) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
 updateBoard = (c, p) => {
-  if(colTracker[c]) {
-    colTracker[c] ++;
+  if (colTracker[c]) {
+    colTracker[c]++;
   } else {
     colTracker[c] = 1;
   }
@@ -61,8 +122,8 @@ app.get('/api', (req, res) => {
 app.post('/api/:column', (req, res) => {
   const { column } = req.params;
   const { player } = req.query;
-  const row = updateBoard(column, player);
-  const endGame = checkEndGame(row, column);
+  const row = updateBoard(Number(column), player);
+  const endGame = checkEndGame(row, Number(column), player);
 
   res.status(201).send({ board, endGame });
 })
