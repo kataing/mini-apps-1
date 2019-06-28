@@ -6,16 +6,25 @@ body {
 }
 
 table {
-  border: 2px solid black;
+  border: 2px solid darkgray;
   background-color: yellow;
   margin: auto;
 }
 
+.p1 {
+  background-color: red;
+}
+
+.p2 {
+  background-color: black;
+}
+
 td {
-  border: 2px solid black;
-  border-radius: 500px;
+  border: 2px solid darkgray;
+  border-radius: 50px;
   background-color: white;
-  color: white;
+  /* color: white; */
   height: 100px;
   width: 100px;
 }
+

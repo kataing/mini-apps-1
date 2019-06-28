@@ -8,9 +8,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      board: []
+      board: [],
+      player: true
     }
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.determinePlayer = this.determinePlayer.bind(this);
   }
 
   get() {
@@ -24,17 +26,35 @@ class App extends React.Component {
       .catch(() => console.log('We were not able to complete your request.'))
   }
 
-  post(id) {
-    console.log('post')
+  post(column) {
+    const colIndex = Number(column.slice(1,2));
+    const player = this.determinePlayer();
     axios
-      .post('/api/id')
-      .then(() => {console.log('hello');})
-      .catch(() => {console.log('this crashed')})
+      .post(`/api/${colIndex}?player=${player}`)
+      .then(({ data }) => {
+        this.setState({
+          board: data.board
+        })
+        console.log('this is board', data.board);
+        console.log('this is end.game', data.endGame);
+      })
+      .catch(() => {console.log('this request was not completed')})
 
   }
 
   handleOnClick(e) {
-    this.post(e.target.id);
+    if(Number(e.target.className[4]) === 0) {
+      this.post(e.target.className);
+      this.setState({
+        player: !this.state.player
+      })
+    } else {
+      console.log('pick another column');
+    }
+  }
+
+  determinePlayer() {
+    return(this.state.player ? 1 : 2)
   }
 
   componentDidMount() {
@@ -50,8 +70,8 @@ class App extends React.Component {
           <tbody className='board'>
             {this.state.board.map((row, key) => {
               return (
-                <Row key={key} row={row} handleOnClick={this.handleOnClick} />
-              )
+                <Row key={key} rowIndex={key} row={row} handleOnClick={this.handleOnClick} determinePlayer={this.determinePlayer}/>
+              );
             })}
           </tbody>
         </table>
