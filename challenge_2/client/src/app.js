@@ -87,21 +87,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h1>CSV Converter</h1>
         <form onSubmit={this.handleOnSubmit}>
           <textarea onChange={this.handleOnChange} value={this.state.jsonText}></textarea>
-          <div>
-            <input id='fileToLoad' type='file' onChange={this.handlePickedFile} onClick={this.handleLinkOnClick}></input>
-          </div>
-          <div>
-            <button>Convert to CSV</button>
+          <div className='selection-container'>
+            <span>
+              <input id='fileToLoad' type='file' onChange={this.handlePickedFile} onClick={this.handleLinkOnClick}></input>
+            </span>
+            <span>
+              <button>Convert to CSV</button>
+            </span>
+            <a href={this.filepath} download='converted.csv' onClick={this.handleLinkOnClick} >Click to download</a>
           </div>
         </form>
-        <a href={this.filepath} download='converted.csv' onClick={this.handleLinkOnClick} >Click to download</a>
         <h3>CSV Preview</h3>
-        <div>{this.state.csv}</div>
-      </div>
+        <div className='csv-result'>{this.state.csv}</div>
+      </section>
     )
   }
 }
