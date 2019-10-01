@@ -115,12 +115,10 @@ class App extends React.Component {
   home() {
     if (this.state.home) {
       return (
-        <span>
-          <div>
-            <h3>This is home</h3>
-          </div>
+        <section>
+          <img src='cart.png' alt='cart' />
           <button onClick={this.handleCheckoutClick}>Begin Checkout</button>
-        </span>
+        </section>
       )
     }
   }
@@ -128,24 +126,18 @@ class App extends React.Component {
   f1() {
     if (this.state.f1) {
       return (
-        <span>
+        <section>
           <form id='f1' >
             <h3>General Information</h3>
-            <div>
-              <div>Name: </div>
-              <input id='name' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>Email: </div>
-              <input id='email' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>Password: </div>
-              <input id='password' type='password' onChange={this.handleOnChange}></input>
-            </div>
+            <div>Name: </div>
+            <input id='name' type='text' onChange={this.handleOnChange}></input>
+            <div>Email: </div>
+            <input id='email' type='text' onChange={this.handleOnChange}></input>
+            <div>Password: </div>
+            <input id='password' type='password' onChange={this.handleOnChange}></input>
           </form>
           <button id='nextbutton1' onClick={this.handleNext1Click}>Next</button>
-        </span>
+        </section>
       )
     }
   }
@@ -153,36 +145,24 @@ class App extends React.Component {
   f2() {
     if (this.state.f2) {
       return (
-        <span>
+        <section>
           <form id='f2'>
             <h3>Shipping Information</h3>
-            <div>
-              <div>Address Line 1: </div>
-              <input id='address1' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>Address Line 2: </div>
-              <input id='address2' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>City</div>
-              <input id='city' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>State</div>
-              <input id='state' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>Zipcode</div>
-              <input id='zipcode' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>Phone#</div>
-              <input id='phone' type='text'></input>
-            </div>
+            <div>Address Line 1: </div>
+            <input id='address1' type='text' onChange={this.handleOnChange}></input>
+            <div>Address Line 2: </div>
+            <input id='address2' type='text' onChange={this.handleOnChange}></input>
+            <div>City</div>
+            <input id='city' type='text' onChange={this.handleOnChange}></input>
+            <div>State</div>
+            <input id='state' type='text' onChange={this.handleOnChange}></input>
+            <div>Zipcode</div>
+            <input id='zipcode' type='text' onChange={this.handleOnChange}></input>
+            <div>Phone#</div>
+            <input id='phone' type='text'></input>
           </form>
           <button id='nextbutton2' onClick={this.handleNext2Click}>Next</button>
-        </span>
+        </section>
       )
     }
   }
@@ -190,28 +170,20 @@ class App extends React.Component {
   f3() {
     if (this.state.f3) {
       return (
-        <span>
+        <section>
           <form id='f3'>
             <h3>Billing Information</h3>
-            <div>
-              <div>Creditcard#: </div>
-              <input id='creditcard' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>Exp: </div>
-              <input id='expirydate' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>CVV</div>
-              <input id='cvv' type='text' onChange={this.handleOnChange}></input>
-            </div>
-            <div>
-              <div>Billing Zipcode</div>
-              <input id='billingzip' type='text' onChange={this.handleOnChange}></input>
-            </div>
+            <div>Creditcard#: </div>
+            <input id='creditcard' type='text' onChange={this.handleOnChange}></input>
+            <div>Exp: </div>
+            <input id='expirydate' type='text' onChange={this.handleOnChange}></input>
+            <div>CVV</div>
+            <input id='cvv' type='text' onChange={this.handleOnChange}></input>
+            <div>Billing Zipcode</div>
+            <input id='billingzip' type='text' onChange={this.handleOnChange}></input>
           </form>
           <button id='nextbutton3' onClick={this.handleNext3Click}>Next</button>
-        </span>
+        </section>
       )
     }
   }
@@ -227,72 +199,74 @@ class App extends React.Component {
   confirmation() {
     if (this.state.confirmation) {
       return (
-        <span>
-          <h3>This is confirmation</h3>
-          <h3>General Information</h3>
-          <div>
-            <div>Name: </div>
-            <span>{this.state.name}</span>
-          </div>
-          <div>
-            <div>Email: </div>
-            <span>{this.state.email}</span>
-          </div>
-          <div>
-            <div>Password: </div>
-            <span>{this.state.password}</span>
-          </div>
-          <h3>Shipping Information</h3>
-          <div>
-            <div>Address Line 1: </div>
-            <span>{this.state.address1}</span>
-          </div>
-          <div>
-            <div>Address Line 2: </div>
-            <span>{this.state.address2}</span>
-          </div>
-          <div>
-            <div>City</div>
-            <span>{this.state.city}</span>
-          </div>
-          <div>
-            <div>State</div>
-            <span>{this.state.state}</span>
-          </div>
-          <div>
-            <div>Zipcode</div>
-            <span>{this.state.zipcode}</span>
-          </div>
-          <div>
-            <div>Phone#</div>
-            <span>{this.state.phone}</span>
-          </div>
-          <h3>Billing Information</h3>
-          <div>
-            <div>Creditcard#: </div>
-            <span>{this.state.creditcard}</span>
-          </div>
-          <div>
-            <div>Exp: </div>
-            <span>{this.state.expirydate}</span>
-          </div>
-          <div>
-            <div>CVV</div>
-            <span>{this.state.cvv}</span>
-          </div>
-          <div>
-            <div>Billing Zipcode</div>
-            <span>{this.state.billingzip}</span>
-          </div>
+        <section>
+          <form className='confirmation'>
+            {/* <h3>This is confirmation</h3> */}
+            <h3>General Information</h3>
+            <div>
+              <span>Name: </span>
+              <span>{this.state.name}</span>
+            </div>
+            <div>
+              <span>Email: </span>
+              <span>{this.state.email}</span>
+            </div>
+            <div>
+              <span>Password: </span>
+              <span>{this.state.password}</span>
+            </div>
+            <h3>Shipping Information</h3>
+            <div>
+              <span>Address Line 1: </span>
+              <span>{this.state.address1}</span>
+            </div>
+            <div>
+              <span>Address Line 2: </span>
+              <span>{this.state.address2}</span>
+            </div>
+            <div>
+              <span>City: </span>
+              <span>{this.state.city}</span>
+            </div>
+            <div>
+              <span>State: </span>
+              <span>{this.state.state}</span>
+            </div>
+            <div>
+              <span>Zipcode: </span>
+              <span>{this.state.zipcode}</span>
+            </div>
+            <div>
+              <span>Phone#: </span>
+              <span>{this.state.phone}</span>
+            </div>
+            <h3>Billing Information</h3>
+            <div>
+              <span>Creditcard#: </span>
+              <span>{this.state.creditcard}</span>
+            </div>
+            <div>
+              <span>Exp: </span>
+              <span>{this.state.expirydate}</span>
+            </div>
+            <div>
+              <span>CVV: </span>
+              <span>{this.state.cvv}</span>
+            </div>
+            <div>
+              <span>Billing Zipcode: </span>
+              <span>{this.state.billingzip}</span>
+            </div>
+          </form>
           <button id='purchasebutton' onClick={this.handlePurchaseClick}>Purchase</button>
-        </span>
+        </section>
       )
     }
   }
 
   render() {
     return (
-      <div>
+      <section>
         {/* <div>This is app</div> */}
         <h1>Welcome to our site!</h1>
         {this.home()}
@@ -300,7 +274,7 @@ class App extends React.Component {
         {this.f2()}
         {this.f3()}
         {this.confirmation()}
-      </div>
+      </section>
     )
   }
 }
